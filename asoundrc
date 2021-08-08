@@ -1,0 +1,37 @@
+pcm.JockeyIE2 {
+	type multi
+	slaves {
+		A {
+			pcm {
+				type plug
+				slave {
+					pcm { type hw; card "JockeyIE2"; device 0; subdevice 0; channels 2; }
+					format S16_LE
+					rate 44100
+				}
+				rate_converter "speexrate_medium"
+			}
+			channels 2
+		}
+		B {
+			pcm {
+				type plug
+				slave {
+					pcm { type hw; card "JockeyIE2"; device 0; subdevice 1; channels 2; }
+					format S16_LE
+					rate 44100
+				}
+				rate_converter "speexrate_medium"
+			}
+			channels 2
+		}
+	
+	}
+	bindings {
+		0 { slave "A"; channel 0; }
+		1 { slave "A"; channel 1; }
+		2 { slave "B"; channel 0; }
+		3 { slave "B"; channel 1; }
+		
+	}
+}
